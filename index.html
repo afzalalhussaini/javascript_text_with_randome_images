@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handling Pop Up And Input Value</title>
+</head>
+<body>
+    <style>
+        #maincontainer.container {
+            background-color: blueviolet;
+            position: relative;
+            width: 90%;
+            height: 500px;
+        }
+        .inputs {
+           width: 40%;
+           height: 100%;
+           background-color: aqua;
+           position: absolute;
+           left: 50%;
+        }
+        .input1 {
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            padding: 10px;
+        }
+        .input2 {
+            position: absolute;
+            top: 30%;
+            left: 20%;
+            padding: 10px;
+        }
+        .btn {
+            position: absolute;
+            top: 45%;
+            left: 20%;
+        }
+        #showtext {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            background-color: antiquewhite;
+            width: 20%;
+            padding: 10px;
+        }
+        #text-output {
+            margin-bottom: 10px;
+        }
+    </style>
+    <div id="maincontainer" class="container">
+        <div class="inputs">
+            <input class="input1" type="text" placeholder="Enter The First Value">
+            <input class="input2" type="text" placeholder="Enter The Second Value">
+            <button class="btn">Click Here</button>
+        </div>
+        <div id="showtext">
+            <div id="text-output">Text Show Is Here</div>
+            <div id="image-output"></div>
+        </div>
+    </div>
+
+    <script>
+        let input1 = document.querySelector(".input1");
+        let input2 = document.querySelector(".input2");
+        let button = document.querySelector(".btn");
+
+        let images = ["1.webp", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg" , "8.jpg" , "9.jpg"  ];
+
+        button.addEventListener("click", function() {
+            let value1 = input1.value;
+            let value2 = input2.value;
+            
+            let text ;
+            if (value1 === "" || value2 === "") {
+                alert("Please enter values in both fields.");
+            } else {
+                text = value1 + " " + value2;
+                
+                // Select a random image
+                let randomImage = images[Math.floor(Math.random() * images.length)];
+                
+                // Update text in text-output div
+                document.getElementById("text-output").innerText = text;
+                
+                // Update image in image-output div
+                document.getElementById("image-output").innerHTML = `<img src="${randomImage}" alt="Random Image" style="width: 100%;">`;
+            }
+        });
+    </script>
+</body>
+</html>
